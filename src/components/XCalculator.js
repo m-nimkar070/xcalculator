@@ -12,10 +12,11 @@ const XCalculator = () => {
             if(input){
                 setOutput(eval(input));
             }else{
-                throw new Error("Need Expression !")
+                throw new Error(`pressing "=" without complete expression`)
             }
         } catch (error) {
-            console.log(error)
+            
+            setOutput(error.message)
         }
     }
     const handleClear = () =>{
