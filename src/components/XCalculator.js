@@ -9,7 +9,11 @@ const XCalculator = () => {
     }
     const handleSubmit =()=>{
         try {
-            setOutput(eval(input));
+            if(input){
+                setOutput(eval(input));
+            }else{
+                throw new Error("Need Expression !")
+            }
         } catch (error) {
             console.log(error)
         }
@@ -37,7 +41,7 @@ const XCalculator = () => {
           <button type="button" value='3' onClick={(e)=>handleChnge(e)}>3</button>
           <button type="button" value='C' onClick={handleClear}>C</button>
           <button type="button" value='0' onClick={(e)=>handleChnge(e)}>0</button>
-          <button type="button" value='=' onClick={handleSubmit}>=</button>
+          <button type="button"  onClick={handleSubmit}>=</button>
         </div>
         <div className="btn__Operator">
           <button type="button" value='+' onClick={(e)=>handleChnge(e)}>+</button>
