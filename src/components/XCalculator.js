@@ -9,14 +9,19 @@ const XCalculator = () => {
     }
     const handleSubmit =()=>{
         try {
-            if(input){
-                setOutput(eval(input));
-            }else{
-                throw new Error(`pressing "=" without complete expression`)
+            if (input) {
+                // Check if the input is a valid expression before evaluating
+                // This can be enhanced to check for various invalid cases
+                if (/^[0-9+\-*/.]+$/.test(input) && !/[+\-*/.]$/.test(input)) {
+                    setOutput(eval(input));
+                } else {
+                    throw new Error(`pressing "=" without complete expression`);
+                }
+            } else {
+                throw new Error(`pressing "=" without complete expression`);
             }
         } catch (error) {
-            
-            setOutput(error.message)
+            setOutput("Error");
         }
     }
     const handleClear = () =>{
